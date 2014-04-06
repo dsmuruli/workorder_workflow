@@ -1,9 +1,21 @@
 package com.dmuruli.wodemo.entity;
+import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
+import javax.persistence.*;
 
+@Entity
+ @Table(name = "work_order")
+  @NamedQuery(name="findAllWorkOrders", query="select w From WorkOrder w")
 public class WorkOrder {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="work_order_id", nullable=false, unique=true)
 	Long workOrderId;
 	String contactName;
+	@Column(name="title")
 	String title;
+	@Column(name="description")
 	String description;
 	
 	public Long getWorkOrderId() {
