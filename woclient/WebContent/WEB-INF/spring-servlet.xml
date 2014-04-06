@@ -11,7 +11,16 @@
     http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
    http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-      <context:component-scan base-package="com.mobiledemo.web.controller"/>
+      <context:component-scan base-package="com.dmuruli.wodemo.web.controller"/>
+      <context:annotation-config />
+   <bean id="myEmf" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+    <property name="persistenceUnitName" value="rentaldb"/>
+   </bean>
+    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="myEmf" />
+    </bean>
+    <tx:annotation-driven transaction-manager="txManager" />
+      
       
   <bean id="viewResolver"
     class="org.springframework.web.servlet.view.UrlBasedViewResolver">
