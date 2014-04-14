@@ -10,12 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.dmuruli.wodemo.entity.BaseEntity;
 import com.dmuruli.wodemo.entity.WorkOrder;
 @Controller
 public class WorkOrderController {
 	private static final Logger logger = Logger.getLogger(WorkOrderController.class);
 	@RequestMapping(value="/getSampleWorkOrder", method = RequestMethod.GET, produces="application/json")
-	public  @ResponseBody WorkOrder getSampleWorkOrder(HttpServletResponse response){
+	public  @ResponseBody BaseEntity getSampleWorkOrder(HttpServletResponse response){
 		WorkOrder workOrder = new WorkOrder();
 		workOrder.setContactName("Jos Schmoe");
 		workOrder.setDescription("Sample Work Order");
@@ -40,6 +41,11 @@ public class WorkOrderController {
 	@RequestMapping(value="/assignedworkorders")
 	public ModelAndView getAssignedWorkOrders(){
 		ModelAndView mav = new ModelAndView("assignedworkorders");
+		return mav;
+	}
+	@RequestMapping(value="/completedworkorders")
+	public ModelAndView getCompletedWorkOrders(){
+		ModelAndView mav = new ModelAndView("completedworkorders");
 		return mav;
 	}
 }

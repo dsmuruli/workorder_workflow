@@ -1,25 +1,26 @@
 package com.dmuruli.wodemo.entity;
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 @Entity
- @Table(name = "work_order")
+ @Table(name = "WORK_ORDER")
   @NamedQuery(name="findAllWorkOrders", query="select w From WorkOrder w")
 @XmlRootElement(name = "workorder")
-public class WorkOrder {
+public class WorkOrder extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="work_order_id", nullable=false, unique=true)
+	@Column(name="WORK_ORDER_ID", nullable=false, unique=true)
 	Long workOrderId;
 	String contactName;
-	@Column(name="title")
+	@Column(name="TITLE")
 	String title;
-	@Column(name="description")
+	@Column(name="DESCRIPTION")
 	String description;
-	
+	@Column (name="ASSIGNED_TO")
+	AppUser assignedTo;
 	public Long getWorkOrderId() {
 		return workOrderId;
 	}
