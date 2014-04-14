@@ -3,10 +3,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.*;
-
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 @Entity
  @Table(name = "work_order")
   @NamedQuery(name="findAllWorkOrders", query="select w From WorkOrder w")
+@XmlRootElement(name = "workorder")
 public class WorkOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,24 +23,28 @@ public class WorkOrder {
 	public Long getWorkOrderId() {
 		return workOrderId;
 	}
+	@XmlElement
 	public void setWorkOrderId(Long workOrderId) {
 		this.workOrderId = workOrderId;
 	}
 	public String getContactName() {
 		return contactName;
 	}
+	@XmlElement
 	public void setContactName(String contactName) {
 		this.contactName = contactName;
 	}
 	public String getTitle() {
 		return title;
 	}
+	@XmlElement
 	public void setTitle(String title) {
 		this.title = title;
 	}
 	public String getDescription() {
 		return description;
 	}
+	@XmlElement
 	public void setDescription(String description) {
 		this.description = description;
 	}
