@@ -12,10 +12,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ROLE")
-public class Role implements Serializable {
+public class Role extends BaseEntity implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long roleId;
 	private String roleName;
 	private String roleDescription;

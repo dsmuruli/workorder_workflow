@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.lang.Boolean;
 import java.lang.Long;
 import java.lang.String;
+import java.util.List;
 
 import javax.persistence.*;
+
 
 /**
  * Entity implementation class for Entity: Address
@@ -16,13 +18,22 @@ import javax.persistence.*;
 public class Address implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ADDRESS_ID")
 	private Long addressId;
+	@Column(name="STREET1")
 	private String street1;
+	@Column(name="STREET2")
 	private String street2;
+	@Column(name="CITY")
 	private String city;
+	@Column(name="STATE")
 	private String state;
+	@Column(name="ZIP_CODE")
 	private String zipCode;
+	@Column(name="IS_PRIMARY_ADDRESS")
 	private Boolean primaryAddress;
+	  
 	private static final long serialVersionUID = 1L;
 
 	public Address() {

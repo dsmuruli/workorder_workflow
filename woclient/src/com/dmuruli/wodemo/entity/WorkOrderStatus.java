@@ -16,8 +16,12 @@ public class WorkOrderStatus implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="WORK_ORDER_STATUS_ID")
 	private Long workOrderStatusId;
+	@Column(name="STATUS_NAME")
 	private String statusName;
+	@Column(name="STATUS_NOTES")
 	private String statusNotes;
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +38,6 @@ public class WorkOrderStatus implements Serializable {
 	public String getStatusName() {
 		return this.statusName;
 	}
-
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
 	}   
