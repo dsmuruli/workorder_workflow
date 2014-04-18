@@ -24,7 +24,7 @@ public class WorkOrder extends BaseEntity {
 	String title;
 	@Column(name="DESCRIPTION")
 	String description;
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="WORK_ORDER_STATUS_ID")
 	WorkOrderStatus workOrderStatus;
 	@ManyToMany
@@ -32,7 +32,7 @@ public class WorkOrder extends BaseEntity {
 	  joinColumns={@JoinColumn(name="WORK_ORDER_ID", insertable=false, updatable=false, referencedColumnName="WORK_ORDER_ID")},
 	  inverseJoinColumns={@JoinColumn(name="TECHNICIAN_ID", referencedColumnName="APP_USER_ID")})
 	   List<AppUser> technicians;
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	  @JoinTable(name="WORK_ORDER_EXPEDITOR",
 	  joinColumns={@JoinColumn(name="WORK_ORDER_ID", insertable=false, updatable=false, referencedColumnName="WORK_ORDER_ID")},
 	  inverseJoinColumns={@JoinColumn(name="EXPEDITOR_ID", referencedColumnName="APP_USER_ID")})

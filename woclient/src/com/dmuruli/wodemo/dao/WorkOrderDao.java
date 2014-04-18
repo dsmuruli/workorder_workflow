@@ -19,9 +19,23 @@ public class WorkOrderDao {
 		    workOrderList =entityManager.createNamedQuery("findAllWorkOrders").getResultList();
 		    return workOrderList;
 		  }
-	  public int findAssignedWorkOrders(long appUserId){
+	  public int findAssignedWorkOrdersCount(long appUserId){
 		  int assignedWorkOrdersCount =0;
 		  return assignedWorkOrdersCount;
+	  }
+	  @SuppressWarnings("unchecked")
+	public List<WorkOrder> findWorkOrdersByStatus(long appUserId, Long statusId){
+		  List<WorkOrder> workOrderList = new ArrayList<WorkOrder>();
+		  workOrderList =entityManager.createNamedQuery("findWorkOrdersByStatus")
+				  .setParameter("workOrderStatusId", statusId)
+				  .getResultList();
+		  
+		  return workOrderList;
+	  }
+	  private List<WorkOrder> findWorkOrdersByNamedQuery(long appUserId, String namedQuery){
+		  List<WorkOrder> workOrderList = new ArrayList<WorkOrder>();
+		  workOrderList =entityManager.createNamedQuery(namedQuery).getResultList();	  
+		  return workOrderList;
 	  }
 	  
 	  public int findOpenWorkOrders(long appUserId){
@@ -30,6 +44,7 @@ public class WorkOrderDao {
 	  }
 	  public int findCompletedWorkOrders(long appUserId){
 		  int completedWorkOrdersCount =0;
+		  
 		  return completedWorkOrdersCount;
 	  }
 	  public WorkOrder saveWorkOrder(WorkOrder workOrder){
